@@ -60,9 +60,22 @@ class _SignupPageState extends State<SignupPage> {
       print(statusCode);
       if(statusCode==200){
         Navigator.pushNamed(context, AppRoutes.login);
+         ScaffoldMessenger.of(context).showSnackBar(
+           const SnackBar(
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'You have registered successfully',
+              style: TextStyle(
+                fontSize: 16
+              ),
+              textAlign: TextAlign.center,
+              ),
+          ),
+        );
       }else{
          ScaffoldMessenger.of(context).showSnackBar(
            const SnackBar(
+            behavior: SnackBarBehavior.floating,
             content: Text(
               'This email is already associated with an account!',
               style: TextStyle(
@@ -70,7 +83,6 @@ class _SignupPageState extends State<SignupPage> {
               ),
               textAlign: TextAlign.center,
               ),
-            backgroundColor: AppColors.grey,
           ),
         );
       }

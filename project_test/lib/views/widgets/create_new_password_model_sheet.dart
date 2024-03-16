@@ -1,10 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:project_test/config.dart';
+import 'package:project_test/views/pages/login_page.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_routes.dart';
+import 'package:http/http.dart' as http;
 
 class CreateNewPasswordModelSheet extends StatefulWidget {
-  const CreateNewPasswordModelSheet({super.key});
+   final email;
+  const CreateNewPasswordModelSheet({super.key, this.email});
 
   @override
   State<CreateNewPasswordModelSheet> createState() => _CreateNewPasswordModelSheetState();
@@ -33,12 +39,32 @@ class _CreateNewPasswordModelSheetState extends State<CreateNewPasswordModelShee
     super.dispose();
   }
 
-  void changePassword(){
+  Future<void> changePassword() async {
     if(_formKey.currentState!.validate()){
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password changed successfully'),),
+      var resetToNewPassword = {
+        "email":widget.email,
+        "newPassword":_password,
+      };
+      var response = await http.post(Uri.parse(resetPassword),
+      headers: {"Content-Type":"application/json"},
+      body: jsonEncode(resetToNewPassword)
       );
-      Navigator.of(context).pushNamed(AppRoutes.login);
+      var jsonResponse = jsonDecode(response.body);
+      final int statusCode = response.statusCode;
+      print(statusCode);
+      if(statusCode==200){
+        Navigator.of(context).pop();
+         ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          behavior: SnackBarBehavior.floating, 
+          content: Text('Password changed successfully'),
+          ),
+        );
+        Navigator.of(context).pushNamed(AppRoutes.login);
+      }else{
+       
+      }
+    
     }
   }
 
