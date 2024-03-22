@@ -1,6 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:project_test/views/widgets/create_new_password_model_sheet.dart';
 
+
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:project_test/config.dart';
+import 'package:project_test/views/widgets/code_verification_model_sheet.dart';
+import 'package:project_test/views/widgets/create_new_password_model_sheet.dart';
+import 'package:http/http.dart' as http;
 
 import '../../utils/app_colors.dart';
 
@@ -16,11 +22,13 @@ class _forgetPasswordModelSheetState extends State<forgetPasswordModelSheet> {
   late final TextEditingController _emailControler;
   late FocusNode _emailFocusNode;
   String? _email;
+  bool userFound=true;
   @override
   void initState() {
     _formKey=GlobalKey<FormState>();
     _emailControler=TextEditingController();
     _emailFocusNode=FocusNode();
+    userFound=true;
     super.initState();
   }
   @override
@@ -28,23 +36,39 @@ class _forgetPasswordModelSheetState extends State<forgetPasswordModelSheet> {
     _emailControler.dispose();
     super.dispose();
   }
-  void sendCode(){
+  void sendCode()async{
     if(_formKey.currentState!.validate()){
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Code send'),),
+      var userEmail = {
+        "email":_email,
+      };
+      var response = await http.post(Uri.parse(sendVerificationCode),
+      headers: {"Content-Type":"application/json"},
+      body: jsonEncode(userEmail)
       );
-      Navigator.of(context).pop();
-      showModalBottomSheet(
-      context: context, 
-      builder: (context)=> CreateNewPasswordModelSheet(),
-      );
+      var jsonResponse = jsonDecode(response.body);
+      final int statusCode = response.statusCode;
+      print(statusCode);
+      if(statusCode==200){
+        Navigator.of(context).pop();
+        showModalBottomSheet(
+        context: context, 
+        builder: (context)=> CodeVerificationModelSheet(email:_email),
+        );
+        setState(() {
+          userFound=true;
+        });
+      }else{
+        setState(() {
+          userFound=false;
+        });
+      }
+ 
     }
-    
-  }
+ }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 350,
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal:20.0),
@@ -83,17 +107,18 @@ class _forgetPasswordModelSheetState extends State<forgetPasswordModelSheet> {
                       _emailFocusNode.unfocus();
                       sendCode();
                     },
+                    
                     decoration: InputDecoration(
                       hintText: "Enter your Email",
                       prefixIcon: const Icon(Icons.email_outlined),
                       prefixIconColor: AppColors.grey4, 
-                      enabledBorder: OutlineInputBorder(
+                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(color:AppColors.grey4, width: 1.0),
+                      borderSide: BorderSide(color:userFound?AppColors.grey4:AppColors.red, width: 1.0),
                       ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      borderSide: const BorderSide(color:AppColors.primary, width: 2.0),
+                      borderSide: BorderSide(color:userFound?AppColors.primary:AppColors.red, width: 2.0),
                     ),
                     errorBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: AppColors.red),
@@ -122,11 +147,13 @@ class _forgetPasswordModelSheetState extends State<forgetPasswordModelSheet> {
                       ),
                       ),  
                     ),
+
                 ],
                     ),
                 
               ),
             ),
+            
           );
        
     

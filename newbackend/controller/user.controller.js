@@ -1,6 +1,7 @@
 const UserService=require("../services/user.services");
 const EmailService = require("../services/email.services");
 
+
 exports.register=async(req,res,next)=>{
     try{
       const{username,email,password}=req.body;
@@ -66,12 +67,64 @@ exports.sendVerificationCode = async (req, res, next) => {
   }
 }
 
-exports.verifyCodeAndResetPassword = async (req, res, next) => {
+exports.ResetPassword = async (req, res, next) => {
   try {
-      const { email, verificationCode, newPassword } = req.body;
-      await UserService.verifyCodeAndResetPassword(email, verificationCode, newPassword);
+      const { email,newPassword } = req.body;
+      await UserService.ResetPassword(email, newPassword);
       res.status(200).json({ status: 200, message: 'Password reset successful' });
   } catch (error) {
       res.status(400).json({ status: 400, message: error.message });
   }
 }
+
+exports.verifyCode = async (req, res, next) => {
+  try {
+      const { email, verificationCode} = req.body;
+      await UserService.verifyCode(email, verificationCode);
+      res.status(200).json({ status: 200, message: 'code verified successfully' });
+  } catch (error) {
+      res.status(400).json({ status: 400, message: error.message });
+  }
+}
+
+exports.getUserInfo = async (req, res, next) => {
+    try {
+        const user = await UserService.getUserInfo(req.user.email);
+        res.status(200).json({ status: 200, user });
+    } catch (error) {
+        res.status(500).json({ status: 500, message: 'Internal server error' });
+    }
+}
+
+
+exports.deleteAccount = async (req, res, next) => {
+    try {
+        const userId = req.user._id; 
+        await UserService.deleteAccount(userId);
+        res.status(200).json({ status: 200, message: 'Account deleted successfully' });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ status: 500, message: 'Internal server error' });
+    }
+};
+
+exports.editUserInfo = async (req, res, next) => {
+    try {
+        const userId = req.user._id; 
+        const { username, email, password } = req.body;
+        const newUserInfo = {};
+        if (username) newUserInfo.username = username;
+        if (email) newUserInfo.email = email;
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            newUserInfo.password = hashedPassword;
+        }
+        
+        await UserService.editUserInfo(userId, newUserInfo);
+        res.status(200).json({ status: 200, message: 'User information updated successfully' });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ status: 500, message: 'Internal server error' });
+    }
+};
+

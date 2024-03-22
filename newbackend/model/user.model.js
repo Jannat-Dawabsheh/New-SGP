@@ -1,10 +1,10 @@
-const mongoose=require('mongoose');
-const db=require('../config/db');
-const bcrypt=require("bcrypt");
+const mongoose = require('mongoose');
+const db = require('../config/db');
+const bcrypt = require("bcrypt");
 
 const {Schema}=mongoose;
 
-const userSchema=new Schema({
+const userSchema =new Schema({
 
     username:{
         type: String,
@@ -26,10 +26,10 @@ const userSchema=new Schema({
 
 userSchema.pre('save',async function(){
     try{
-       var user=this;
+       var user = this;
     
-       const hashpass=await bcrypt.hash(user.password,10);
-       user.password=hashpass;
+       const hashpass = await bcrypt.hash(user.password,10);
+       user.password = hashpass;
     }catch(error){
         throw error;
     }
@@ -44,5 +44,5 @@ userSchema.methods.comparePassword=async function(userPassword){
     }
 }
 
-const UserModel=db.model('user',userSchema);
-module.exports=UserModel;
+const UserModel = db.model('user',userSchema);
+module.exports = UserModel;

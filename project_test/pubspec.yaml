@@ -16,6 +16,9 @@ dependencies:
   http:
   jwt_decoder:
   shared_preferences:
+  flutter_verification_code: ^1.1.7
+  flutter_verification_code_field: ^1.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

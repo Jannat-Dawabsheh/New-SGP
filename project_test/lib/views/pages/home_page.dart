@@ -12,19 +12,13 @@ class _HomePageState extends State<HomePage> {
 
   late String email;
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Map<String,dynamic>jwtDecodedToken=JwtDecoder.decode(widget.token);
-  //   email=jwtDecodedToken['email'];
-  // }
   @override
   Widget build(BuildContext context) {
    final token=ModalRoute.of(context)?.settings.arguments.toString();
    Map<String,dynamic>jwtDecodedToken=JwtDecoder.decode(token!);
     email=jwtDecodedToken['email'];
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Text(email),
       ),

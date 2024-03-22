@@ -67,6 +67,7 @@ void login() async {
       }else{
         ScaffoldMessenger.of(context).showSnackBar(
            const SnackBar(
+            behavior: SnackBarBehavior.floating,
             content: Text(
               'Wrong credentials! Invalid email or password',
               style: TextStyle(
@@ -74,7 +75,6 @@ void login() async {
               ),
               textAlign: TextAlign.center,
               ),
-            backgroundColor: AppColors.grey,
           ),
         );
       }
@@ -289,7 +289,7 @@ void login() async {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Don\'t have an account?",
+                          Text("Don't have an account?",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
