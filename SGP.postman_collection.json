@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "63d93a02-88cb-4c44-8f34-8727ada5ed7a",
+		"name": "SGP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30892156"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dalia\",\n    \"email\": \"dalia.2001.kh@gmail.com\",\n    \"password\":  \"da@123456789\"\n  \n   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"email\": \"dalia.2001.kh@gmail.com\",\n    \"password\":  \"da@123456789\"\n  \n   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/sendVerificationCode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"sendVerificationCode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/verifyCode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"verifyCode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/resetPassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"resetPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add child",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZkYmM2MjYwOGRkMmY3MDZiNjg3ZTYiLCJlbWFpbCI6ImRhbGlhLjIwMDEua2hAZ21haWwuY29tIiwiaWF0IjoxNzExMTM3ODI1LCJleHAiOjE3MTExNDE0MjV9.xbROwhxDfPLhZb-10S-cTmtavVTmmBXI5MTD-NdjDCk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ahmad\",\n    \"dateOfBirth\": \"2023-01-17\",\n    \"gender\":\"male\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/child/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"child",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZkYmM2MjYwOGRkMmY3MDZiNjg3ZTYiLCJlbWFpbCI6ImRhbGlhLjIwMDEua2hAZ21haWwuY29tIiwiaWF0IjoxNzExMTI3Njk3LCJleHAiOjE3MTExMzEyOTd9.doHnLDVB7L4Se6GZVj8Oen4xZP3DQMx499p-jqdH4iE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete child",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZkYmM2MjYwOGRkMmY3MDZiNjg3ZTYiLCJlbWFpbCI6ImRhbGlhLjIwMDEua2hAZ21haWwuY29tIiwiaWF0IjoxNzExMTM3ODI1LCJleHAiOjE3MTExNDE0MjV9.xbROwhxDfPLhZb-10S-cTmtavVTmmBXI5MTD-NdjDCk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/child/65fde4394df15f7cca179b00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"child",
+						"65fde4394df15f7cca179b00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit user info",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZkYmM2MjYwOGRkMmY3MDZiNjg3ZTYiLCJlbWFpbCI6ImRhbGlhLjIwMDEua2hAZ21haWwuY29tIiwiaWF0IjoxNzExMTM3ODI1LCJleHAiOjE3MTExNDE0MjV9.xbROwhxDfPLhZb-10S-cTmtavVTmmBXI5MTD-NdjDCk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"daliakh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user account",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZkYmM2MjYwOGRkMmY3MDZiNjg3ZTYiLCJlbWFpbCI6ImRhbGlhLjIwMDEua2hAZ21haWwuY29tIiwiaWF0IjoxNzExMTM3ODI1LCJleHAiOjE3MTExNDE0MjV9.xbROwhxDfPLhZb-10S-cTmtavVTmmBXI5MTD-NdjDCk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "child info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/child/65fde4394df15f7cca179b00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"child",
+						"65fde4394df15f7cca179b00"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
