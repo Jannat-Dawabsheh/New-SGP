@@ -18,7 +18,10 @@ dependencies:
   shared_preferences:
   flutter_verification_code: ^1.1.7
   flutter_verification_code_field: ^1.0.0
-  
+  cached_network_image: ^3.3.0
+  persistent_bottom_nav_bar: ^5.0.2
+  flutter_phosphor_icons: ^0.0.1+6
+  font_awesome_flutter: ^10.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
