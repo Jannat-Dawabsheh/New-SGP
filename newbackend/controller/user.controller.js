@@ -10,7 +10,7 @@ exports.register=async(req,res,next)=>{
         res.status(409).json({status:409});
         return;
       }
-      const successRes=await UserService.registerUser(username,email,password);
+      const successRes = await UserService.registerUser(username,email,password);
       res.json({status:200,success:"User Registered successfully"});
     }catch(error){
         throw error;

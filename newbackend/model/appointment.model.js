@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const db = require('../config/db');
 
 const appointmentSchema = new mongoose.Schema({
     title: {
@@ -24,10 +25,20 @@ const appointmentSchema = new mongoose.Schema({
     },
     childId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Child'
+        ref: 'Child',
+        required: true
     }
 });
 
-const Appointment = mongoose.model('Appointment', appointmentSchema);
+appointmentSchema.statics.updateAppointment = async function (appointmentId, updateData) {
+    try {
+        const appointment = await this.findByIdAndUpdate(appointmentId, updateData, { new: true });
+        return appointment;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const Appointment = db.model('Appointment', appointmentSchema);
 
 module.exports = Appointment;
