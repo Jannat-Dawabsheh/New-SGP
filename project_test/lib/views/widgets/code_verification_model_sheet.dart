@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_verification_code_field/flutter_verification_code_field.dart';
+
 import 'package:project_test/config.dart';
 import 'package:project_test/views/widgets/create_new_password_model_sheet.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
@@ -33,7 +33,7 @@ class _CodeVerificationModelSheetState extends State<CodeVerificationModelSheet>
       headers: {"Content-Type":"application/json"},
       body: jsonEncode(codeVerification)
       );
-      var jsonResponse = jsonDecode(response.body);
+      //var jsonResponse = jsonDecode(response.body);
       final int statusCode = response.statusCode;
       print(statusCode);
       if(statusCode==200){
@@ -79,7 +79,7 @@ class _CodeVerificationModelSheetState extends State<CodeVerificationModelSheet>
                         underlineUnfocusedColor:isVerified?AppColors.grey4:AppColors.red, 
                         underlineColor:isVerified?AppColors.primary:AppColors.red,
                         onCompleted: (String value) {
-                          print(value);
+                          debugPrint(value);
                           setState(() {
                             _code = value;
                           });

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_test/model/categories_model.dart';
-import 'package:project_test/utils/app_colors.dart';
-import 'package:project_test/utils/app_routes.dart';
 
 
 class CategoryTabView extends StatefulWidget {
@@ -20,12 +18,12 @@ class _CategoryTabViewState extends State<CategoryTabView> {
         child: Column(
             children: [
               GridView.builder(
-                   gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                   gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       mainAxisSpacing: 10,
                       //crossAxisSpacing: 2,
                       ),
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: categoryList.length,
                       itemBuilder: (context,index)=>

@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:project_test/utils/app_colors.dart';
 
 
@@ -26,13 +24,11 @@ class HomeTabView extends StatelessWidget {
                     ),
                   TextButton(
                     onPressed: (){}, 
-                    child: Text('See All')
+                    child: const Text('See All'),
                     ),
-
-                    
                 ],
                ),
-
+                const SizedBox(height: 5,),
                Stack(
                 alignment: Alignment.bottomRight,
                  children: [
@@ -68,7 +64,7 @@ class HomeTabView extends StatelessWidget {
                                 width: 150,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: Color.fromARGB(255, 79, 6, 91).withOpacity(0.3),
+                                  color: const Color.fromARGB(255, 79, 6, 91).withOpacity(0.3),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -97,7 +93,7 @@ class HomeTabView extends StatelessWidget {
                                 width: 130,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.0),
-                                  color: Color.fromARGB(255, 79, 6, 91).withOpacity(0.3),
+                                  color: const Color.fromARGB(255, 79, 6, 91).withOpacity(0.3),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),

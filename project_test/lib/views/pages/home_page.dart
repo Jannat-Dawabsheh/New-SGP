@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:project_test/utils/app_colors.dart';
 import 'package:project_test/views/widgets/category_tab_view.dart';
 import 'package:project_test/views/widgets/home_tab_view.dart';
@@ -66,9 +64,9 @@ late final TabController _tabController;
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children:[
+                children:const [
                   HomeTabView(),
-                  const CategoryTabView(),
+                  CategoryTabView(),
                 ],
               ),
             ),

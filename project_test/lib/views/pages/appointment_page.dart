@@ -10,7 +10,7 @@ class AppointmentPage extends StatefulWidget {
 class _AppointmentPageState extends State<AppointmentPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('appointment page'),
     );
   }

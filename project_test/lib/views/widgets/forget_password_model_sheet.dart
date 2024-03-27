@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project_test/config.dart';
 import 'package:project_test/views/widgets/code_verification_model_sheet.dart';
-import 'package:project_test/views/widgets/create_new_password_model_sheet.dart';
 import 'package:http/http.dart' as http;
 
 import '../../utils/app_colors.dart';
@@ -137,14 +136,14 @@ class _forgetPasswordModelSheetState extends State<forgetPasswordModelSheet> {
                       height: 50,
                       child: ElevatedButton(
                       onPressed:sendCode,
-                      child: Text("Send Code",style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.w600
-                         )),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         foregroundColor: AppColors.white,
                       ),
+                      child: Text("Send Code",style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w600
+                         )),
                       ),  
                     ),
 

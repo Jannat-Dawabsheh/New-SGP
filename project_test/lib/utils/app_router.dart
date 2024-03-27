@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:project_test/utils/app_routes.dart';
 import 'package:project_test/views/pages/activity_page.dart';
+import 'package:project_test/views/pages/child_information_page.dart';
 import 'package:project_test/views/pages/diary_page.dart';
 import 'package:project_test/views/pages/food_page.dart';
 import 'package:project_test/views/pages/growth_page.dart';
-import 'package:project_test/views/pages/home_page.dart';
 import 'package:project_test/views/pages/login_page.dart';
 import 'package:project_test/views/pages/medicine_page.dart';
 import 'package:project_test/views/pages/photo_page.dart';
 import 'package:project_test/views/pages/signup_page.dart';
 import 'package:project_test/views/pages/sleep_page.dart';
+import 'package:project_test/views/pages/test_page.dart';
 import 'package:project_test/views/widgets/custom_buttom_navbar.dart';
 
 
@@ -74,6 +75,18 @@ class AppRouter {
         case AppRoutes.diary:
         return MaterialPageRoute(
           builder: (_) => const DiaryPage(),
+          settings: settings,
+        );
+
+        case AppRoutes.ChildInformation:
+        return MaterialPageRoute(
+          builder: (_) => const ChildInformationPage(),
+          settings: settings,
+        );
+       
+       case AppRoutes.testPage:
+        return MaterialPageRoute(
+          builder: (_) => const TestPage(),
           settings: settings,
         );
 

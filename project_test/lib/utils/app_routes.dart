@@ -9,6 +9,7 @@ class AppRoutes{
   static const String medicine='/medicine';
   static const String photo='/photo';
   static const String diary='/diary';
-
-  
+  static const String addChild='/addChild';
+  static const String ChildInformation='/ChildInformation';
+  static const String testPage='/testPage';
 }

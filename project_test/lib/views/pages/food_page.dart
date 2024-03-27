@@ -12,7 +12,7 @@ class _FoodPageState extends State<FoodPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
+      body: const Center(
         child: Text('food page'),
       ),
     );

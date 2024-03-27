@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:project_test/views/pages/appointment_page.dart';
 import 'package:project_test/views/pages/article_page.dart';
@@ -9,7 +8,7 @@ import 'package:project_test/views/pages/chat_page.dart';
 import 'package:project_test/views/pages/child_page.dart';
 import 'package:project_test/views/pages/home_page.dart';
 import 'package:project_test/views/pages/profile_page.dart';
-import '../../utils/app_routes.dart';
+
 
 class CustomBottomNavbar extends StatefulWidget {
   const CustomBottomNavbar({super.key});
@@ -61,31 +60,31 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.calendar_month_outlined),
+        icon: const Icon(Icons.calendar_month_outlined),
         title: "Appointment",
         activeColorPrimary: Theme.of(context).primaryColor,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.article),
+        icon: const Icon(Icons.article),
         title: "Articles",
         activeColorPrimary: Theme.of(context).primaryColor,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(PhosphorIcons.baby_bold),//Icon(Icons.child_care),
+        icon: const Icon(PhosphorIcons.baby_bold),//Icon(Icons.child_care),
         title: "Add Child",
         activeColorPrimary: Theme.of(context).primaryColor,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.chat_rounded),
+        icon: const Icon(Icons.chat_rounded),
         title: "chatting",
         activeColorPrimary: Theme.of(context).primaryColor,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.person),
+        icon: const Icon(Icons.person),
         title: "Profile",
         activeColorPrimary: Theme.of(context).primaryColor,
         inactiveColorPrimary: Colors.grey,
@@ -97,9 +96,9 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsetsDirectional.only(start: 16),
+       appBar: _currentIndex==0?AppBar(
+        leading: const Padding(
+          padding:  EdgeInsetsDirectional.only(start: 16),
           child: CircleAvatar(
             radius: 20,
             backgroundImage: CachedNetworkImageProvider(
@@ -134,7 +133,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
                 onPressed: () {},
                 icon: const Icon(Icons.search)),
           ],
-      ),
+      ):null,
      
       body: PersistentTabView(
         context,

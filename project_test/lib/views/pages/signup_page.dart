@@ -5,7 +5,7 @@ import 'package:project_test/utils/app_colors.dart';
 import 'package:project_test/utils/app_routes.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_test/config.dart';
-import 'package:project_test/views/pages/login_page.dart';
+
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -55,7 +55,7 @@ class _SignupPageState extends State<SignupPage> {
       headers: {"Content-Type":"application/json"},
       body: jsonEncode(regBody)
       );
-      var jsonResponse = jsonDecode(response.body);
+      //var jsonResponse = jsonDecode(response.body);
       final int statusCode = response.statusCode;
       print(statusCode);
       if(statusCode==200){

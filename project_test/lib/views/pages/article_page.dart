@@ -10,7 +10,7 @@ class ArticlePage extends StatefulWidget {
 class _ArticlePageState extends State<ArticlePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('article page'),
     );
   }
